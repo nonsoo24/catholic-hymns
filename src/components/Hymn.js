@@ -1,9 +1,9 @@
-export const Hymns = [{
+export const HymnList = [{
     id: '1',
     hymnNo: '1',
     title: 'ACCEPT, ALMIGHTY FATHER',
     category: 'Consecration',
-    chorus: 'Chorus: Accept, almighty Father, These gifts of wine and bread Now offered at the altar; To you through Christ Our Head',
+    chorus: 'Accept, almighty Father, These gifts of wine and bread Now offered at the altar; To you through Christ Our Head',
     verses: [
       'In humble reparation For sins and failing dread; To gain life everlasting; For living and for dead.',
       'O God, by this comingling Of water and of wine; May he who our nature; Give us life divine.',
@@ -44,7 +44,7 @@ export const Hymns = [{
     hymnNo: '4',
     title: 'ARE YOU WASHED IN THE BLOOD?',
     category: 'Communion',
-    chorus: 'Chorus: Are you washed in the blood In the soul-cleansing blood of the Lamb? Are your garments spotless Are they white as snow? Are you washed in the blood of the Lamb?',
+    chorus: 'Are you washed in the blood In the soul-cleansing blood of the Lamb? Are your garments spotless Are they white as snow? Are you washed in the blood of the Lamb?',
     verses: [
       'Have you been to Jesus for the Cleansing power? Are you washed in the blood of the Lamb?  Are you fully trusting in his grace   This hour? Are you washed in the blood of the Lamb?',
       'Ye hear how kindly he invites; Ye hear his words so blest; “All ye that labour, come to me, And I will give you rest.”',
@@ -62,7 +62,7 @@ export const Hymns = [{
     hymnNo: '5',
     title: 'BLESSED ASSURANCE',
     category: 'Communion',
-    chorus: 'Chorus: This is my story, this is my song, Praising my Saviour all the day long; This is my story, this is my song, Praising my Saviour all the day long.',
+    chorus: 'This is my story, this is my song, Praising my Saviour all the day long; This is my story, this is my song, Praising my Saviour all the day long.',
     verses: [
       'Blessed assurance, Jesus is mine.	Oh, what a foretaste of glory Divine.	Heir of salvation, purchase of God,	Born of the spirit, washed in his blood.',
       'Perfect submission, perfect delight,	Visions of rapture now burst on my sight;	Angels descending, bring from above	Echoes of mercy, whispers of love.',

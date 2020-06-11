@@ -1,13 +1,19 @@
 <template>
   <div>
-    <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-      <div class="flex items-center flex-shrink-0 text-white ml-6 title">
+    <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6 w-full">
+      <div class="flex items-center flex-shrink-0 text-white title">
         <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54"
           xmlns="http://www.w3.org/2000/svg">
           <path
             d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
           </svg>
-        <span class="font-semibold text-xl tracking-tight">Catholic Hymns</span>
+        <span class="font-semibold text-xl tracking-tight logo-text mr-6">Catholic Hymns</span>
+
+        <svg @click="toggle()" class="hambuger ml-2" viewBox="0 0 100 80" width="25" height="25" fill="#fff" stroke="#fff">
+                    <rect width="100" height="10" rx="8"></rect>
+                    <rect y="30" width="100" height="10" rx="8"></rect>
+                    <rect y="60" width="100" height="10" rx="8"></rect>
+        </svg>
       </div>
       <!-- <div class="block lg:hidden">
     <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -37,18 +43,51 @@
 <script>
 export default {
   name: 'Nav',
+
+   data() {
+        return {
+            isClose: true
+        }
+    },
+
+
+      methods: {
+        toggle() {
+            debugger
+            let sideBar = document.getElementById("mySidenav");
+            let text = document.querySelector(".logo-text");
+            let hambuger = document.querySelector(".hambuger");
+            if (!this.isClose) {
+                //sideBar.classList.add("is-open");
+                sideBar.style.width = '220px'
+                text.style.display = "block"
+                //hambuger.style.display = "none"
+            } else {
+                // sideBar.classList.remove("is-open");
+                sideBar.style.width = '70px'
+                 text.style.display = "none"
+                // hambuger.style.display = "block"
+            }
+            this.isClose = !this.isClose
+        }
+    }
 };
 </script>
 
-<style>
+<style scoped>
   nav {
     overflow: hidden;
     position: fixed;
     width: 100%;
     top: 0;
+    left: 0;
+    z-index: 999;
   }
 
-  .title {
-    margin-left: 220px;
-  }
+
+
+  .hambuger {
+        cursor: pointer;
+    }
+
 </style>

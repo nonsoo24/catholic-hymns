@@ -2,15 +2,15 @@
   <div>
        <nav id="mySidenav" class="sidenav">
         <ul class="navbar-nav">
-             <!-- close button -->
-            <a href="javascript:void(0)" class="closebtn" @click="toggle()">&times;
-            </a>
-
              <router-link id="home" class="nav-link" to="/" tag="li" active-class="active" exact>
+                Home</router-link>
+
+                 <router-link id="hymn" class="nav-link" to="/Hymn" tag="li" active-class="active" exact>
                 Hymns</router-link>
 
-            <router-link id="about" class="nav-link" to="/about" tag="li" active-class="active" exact>
-                Categories</router-link>
+
+            <!-- <router-link id="about" class="nav-link" to="/about" tag="li" active-class="active" exact>
+                Categories</router-link> -->
 
             <!-- <router-link id="skills" class="nav-link" to="/store" tag="li" active-class="active">Skills</router-link> -->
 <!--
@@ -27,17 +27,11 @@
 
 
 <script>
-import { eventBus } from '../main'
 export default {
     data() {
         return {
         }
     },
-    methods: {
-        toggle(){
-            eventBus.closeBtn();
-        }
-    }
 }
 </script>
 
@@ -46,7 +40,7 @@ export default {
          height: 100%;
          width: 0;
          position: fixed;
-         z-index: 9999;
+         /* z-index: 9999; */
          /* top: 0;
          right: 0; */
          background-color: #fff;
@@ -55,7 +49,8 @@ export default {
          overflow-x: hidden;
          transition: 0.5s;
          padding-top: 130px;
-         width: 200px;
+         top: 0;
+         width: 220px;
          border-right: 1px solid #000;
      }
 

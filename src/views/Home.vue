@@ -10,19 +10,19 @@
       <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-9/12 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black-500" placeholder="Search Hymns">
 
       <div class="hymns  w-9/12">
-        <ul>
-            <li><span>1.</span>Accept, Almighty Father </li>
-            <li><span>2.</span>All Ye Who Seek A Comfort Sure</li>
+        <ul v-for="(hymn, i) in hymns" :key="i">
+            <li @click="hymnLink(hymn.id)"><span>{{hymn.hymnNo}}.</span>{{hymn.title}}    </li>
+            <!-- <li><span>2.</span>All Ye Who Seek A Comfort Sure</li>
             <li><span>3.</span>Almigthy Father Take This Bread</li>
             <li><span>4.</span>Are You Washed In the Blood?</li>
-            <li><span>5.</span>Blessed Assurance </li>
+            <li><span>5.</span>Blessed Assurance </li>{{ $route.params}}
             <li><span>6.</span>Come, thou Almighty King </li>
             <li><span>7.</span>Come to the springs of living water</li>
             <li><span>8.</span>Cry out with joy to the Lord </li>
             <li><span>9.</span>Father, within thy house today </li>
             <li><span>10.</span>Happy Indeed is the man </li>
             <li><span>11.</span>Hark, my soul, how everything </li>
-            <li><span>12.</span>Hear us , O Lord </li>
+            <li><span>12.</span>Hear us , O Lord </li> -->
         </ul>
       </div>
   </div>
@@ -49,18 +49,31 @@ export default {
     SideNavBar
   },
 
+ methods: {
+            hymnLink(id) {
+                this.$router.push({
+                    name: 'Hymn',
+                    params: { id }
+                })
+            }
+
+            //this.$router.push({path:'/users',query:{name:'sai'}});
+        },
+
   created() {
 
       HymnList.forEach(hymn => {
           this.hymns.push(hymn);
       })
+
+       console.log(this.$route.query.name);
     }
 };
 </script>
 
-<style>
+<style scoped>
   .catholic-hymns {
-    margin: 120px 0 0 300px;
+    margin: 130px 0 0 300px;
     /* padding: 0 15px; */
 
   }
