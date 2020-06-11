@@ -54,7 +54,7 @@ export default {
          /* opacity: 0.5; */
          overflow-x: hidden;
          transition: 0.5s;
-         padding-top: 30px;
+         padding-top: 130px;
          width: 200px;
          border-right: 1px solid #000;
      }
@@ -89,7 +89,7 @@ export default {
      }
 
      #mySidenav .navbar-nav .nav-link {
-         padding-left: 60px !important;
+         padding-left: 40px !important;
          color: #000;
          text-align: left;
          font-weight: 700;
