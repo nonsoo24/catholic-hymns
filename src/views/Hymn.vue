@@ -10,7 +10,7 @@
           placeholder="Search Hymns"> -->
 
         <div class="hymns  w-9/12" v-for="(hymn, i) in hymns" :key="i">
-          <h6 class="font-bold mb-6"> Chorus: </h6>
+          <h6 class="font-bold mb-6 chorus"> Chorus: </h6>
           <p class="mb-6">
             {{hymn.chorus}}
           </p>
@@ -27,55 +27,57 @@
 // @ is an alias to /src
 import Nav from '@/components/Nav.vue';
 import SideNavBar from '@/components/SideNavBar.vue'
-import {HymnList} from '@/components/Hymn.js'
+import {
+  HymnList
+} from '@/components/Hymn.js'
 
 export default {
 
-   data() {
-       return {
-         hymns: [],
-       }
-     },
-     name: 'Home',
-     components: {
-       Nav,
-       SideNavBar
-     },
-
-     methods: {
-       hymnDetails () {
-         //debugger
-        // let hymnn = this.hymns.find((e) => e.id == id)
-         for(let i = 0; i < this.hymns.length; i++) {
-          // console.log(this.hymns[i].verses)
-         }
-       }
-
-     },
-     created() {
-       let hymnId = this.$route.params.id;
-       HymnList.forEach(hymn => {
-         //this.hymns.push(hymn);
-         if(hymn.id == hymnId){
-            this.hymns.push(hymn);
-           //console.log(hymn)
-
-         }
-       }),
-       this.hymnDetails()
-       //console.log(this.$route.params.id)
-
-     },
-  updated(){
+  data() {
+    return {
+      hymns: [],
+    }
   },
-   };
+  name: 'Home',
+  components: {
+    Nav,
+    SideNavBar
+  },
+
+  //  methods: {
+  //    hymnDetails () {
+  //     debugger
+  //      let hymnn = this.hymns.find((e) => e.id == id)
+  //      for(let i = 0; i < this.hymns.length; i++) {
+  //        console.log(this.hymns[i].verses)
+  //      }
+  //    }
+
+  //  },
+  created() {
+    let hymnId = this.$route.params.id;
+    HymnList.forEach(hymn => {
+        if (hymn.id == hymnId) {
+          this.hymns.push(hymn);
+        }
+    })
+  },
+  // updated() {},
+  mounted() {
+    this.hymns.forEach(hymn => {
+        //debugger
+        if (hymn.chorus == '') {
+            let chorus = document.querySelector('.chorus');
+            chorus.style.display = 'none'
+        }
+      })
+  }
+}
 </script>
 
 <style>
   .catholic-hymns {
     margin: 120px 0 0 300px;
-    /* padding: 0 15px; */
-
   }
 
   .hymns {

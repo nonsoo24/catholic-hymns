@@ -1,26 +1,59 @@
 <template>
   <div>
-       <nav id="mySidenav" class="sidenav">
-        <ul class="navbar-nav">
-             <router-link id="home" class="nav-link" to="/" tag="li" active-class="active" exact>
-                Home</router-link>
+    <nav id="mySidenav" class="sidenav">
+      <ul class="navbar-nav">
+        <router-link id="home" class="nav-link" to="/" tag="li" active-class="active" exact>
+          Home</router-link>
 
-                 <router-link id="hymn" class="nav-link" to="/Hymn" tag="li" active-class="active" exact>
-                Hymns</router-link>
+        <!-- <router-link id="hymn" class="nav-link" to="/Hymn" tag="li" active-class="active" exact>
+                Hymns</router-link> -->
 
 
-            <!-- <router-link id="about" class="nav-link" to="/about" tag="li" active-class="active" exact>
+        <!-- <router-link id="about" class="nav-link" to="/about" tag="li" active-class="active" exact>
                 Categories</router-link> -->
 
-            <!-- <router-link id="skills" class="nav-link" to="/store" tag="li" active-class="active">Skills</router-link> -->
-<!--
+        <!-- <router-link id="skills" class="nav-link" to="/store" tag="li" active-class="active">Skills</router-link> -->
+        <!--
             <router-link id="portfolio" class="nav-link" to="/portfolio" tag="li" active-class="active">Portfolio
             </router-link>
 
             <router-link id="blog" class="nav-link" to="/#" tag="li" active-class="active">Blog
             </router-link> -->
 
-        </ul>
+      </ul>
+
+      <div class="ml-2 hymn-categories">
+        <div class="mb-5">
+          <input type="radio" name="category" id="entrance" value="entrance">
+          <label for="entrance">Entrance Hymns</label>
+        </div>
+
+        <div class="mb-5">
+          <input type="radio" name="category" id="offertory" value="offertory">
+          <label for="offertory">Offertory Hymns</label>
+        </div>
+
+        <div class="mb-5">
+          <input type="radio" name="category" id="consercation" value="consercation">
+          <label for="consercation">Consercation Hymns</label>
+        </div>
+
+        <div class="mb-5">
+          <input type="radio" name="category" id="communion" value="communion">
+          <label for="communion">Communion Hymns</label>
+        </div>
+
+        <div class="mb-5">
+          <input type="radio" name="category" id="closing" value="closing">
+          <label for="closing">Closing Hymns</label>
+        </div>
+
+        <div class="mb-5">
+          <input type="radio" name="category" id="indigenous" value="indigenous">
+          <label for="indigenous">Indigenous Songs</label>
+        </div>
+
+      </div>
     </nav>
   </div>
 </template>
@@ -88,6 +121,17 @@ export default {
          color: #000;
          text-align: left;
          font-weight: 700;
+     }
+
+     .hymn-categories {
+       padding: 90px 0 0 20px;
+     }
+
+     .hymn-categories label {
+       padding-left: 10px;
+       font-weight: 700;
+       font-size: 0.9rem;
+
      }
 
      #mySidenav .navbar-nav .nav-link:hover {

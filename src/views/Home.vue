@@ -34,7 +34,7 @@
 // @ is an alias to /src
 import Nav from '@/components/Nav.vue';
 import SideNavBar from '@/components/SideNavBar.vue'
- import {HymnList} from '@/components/Hymn.js'
+import {HymnList} from '@/components/Hymn.js'
 
 export default {
 
@@ -73,7 +73,6 @@ export default {
         },
 
   created() {
-
       HymnList.forEach(hymn => {
           this.hymns.push(hymn);
       })
