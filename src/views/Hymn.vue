@@ -90,7 +90,6 @@ export default {
 
   .hymns li {
     padding: 20px 20px;
-    cursor: pointer;
   }
   span {
     padding-right: 30px;
