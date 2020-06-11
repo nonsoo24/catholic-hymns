@@ -7,10 +7,10 @@
 <section>
   <div class="catholic-hymns">
       <!-- <span class="ti-search"></span>  -->
-      <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-9/12 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black-500" placeholder="Search Hymns">
+      <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-9/12 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black-500" placeholder="Search Hymns" v-model="searchQuery">
 
       <div class="hymns  w-9/12">
-        <ul v-for="(hymn, i) in hymns" :key="i">
+        <ul v-for="(hymn, i) in filteredHymns" :key="i">
             <li @click="hymnLink(hymn.id)"><span>{{hymn.hymnNo}}.</span>{{hymn.title}}    </li>
             <!-- <li><span>2.</span>All Ye Who Seek A Comfort Sure</li>
             <li><span>3.</span>Almigthy Father Take This Bread</li>
@@ -41,12 +41,24 @@ export default {
    data() {
       return {
         hymns: [],
+        searchQuery: null
       }
     },
   name: 'Home',
   components: {
     Nav,
     SideNavBar
+  },
+ computed: {
+    filteredHymns (){
+      if(this.searchQuery){
+      return this.hymns.filter((hymn)=>{
+         return this.searchQuery.toLowerCase().split(' ').every(v => hymn.title.toLowerCase().includes(v))
+      })
+      }else{
+        return this.hymns;
+      }
+    }
   },
 
  methods: {
@@ -65,8 +77,6 @@ export default {
       HymnList.forEach(hymn => {
           this.hymns.push(hymn);
       })
-
-       console.log(this.$route.query.name);
     }
 };
 </script>
