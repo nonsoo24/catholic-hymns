@@ -10,7 +10,8 @@
           placeholder="Search Hymns"> -->
 
         <div class="hymns  w-9/12" v-for="(hymn, i) in hymns" :key="i">
-          <h6 class="font-bold mb-6 chorus"> Chorus: </h6>
+          <h5 class="font-bold mb-6"> {{hymn.title}}</h5>
+          <h6 class="font-bold mb-3 mt-4 chorus"> Chorus: </h6>
           <p class="mb-6">
             {{hymn.chorus}}
           </p>

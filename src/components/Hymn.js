@@ -42,6 +42,19 @@ export const HymnList = [{
   {
     id: '4',
     hymnNo: '4',
+    title: 'BLESSED ASSURANCE',
+    category: 'Communion',
+    chorus: 'This is my story, this is my song, Praising my Saviour all the day long; This is my story, this is my song, Praising my Saviour all the day long.',
+    verses: [
+      'Blessed assurance, Jesus is mine.	Oh, what a foretaste of glory Divine.	Heir of salvation, purchase of God,	Born of the spirit, washed in his blood.',
+      'Perfect submission, perfect delight,	Visions of rapture now burst on my sight;	Angels descending, bring from above	Echoes of mercy, whispers of love.',
+      'Perfect submission, all is at rest,	I in my Saviour am happy and blest;	Watching and waiting, looking above, Filled with his goodness, lost in his love.',
+    ]
+  },
+
+  {
+    id: '5',
+    hymnNo: '5',
     title: 'ARE YOU WASHED IN THE BLOOD?',
     category: 'Communion',
     chorus: 'Are you washed in the blood In the soul-cleansing blood of the Lamb? Are your garments spotless Are they white as snow? Are you washed in the blood of the Lamb?',
@@ -57,16 +70,4 @@ export const HymnList = [{
     ]
   },
 
-  {
-    id: '5',
-    hymnNo: '5',
-    title: 'BLESSED ASSURANCE',
-    category: 'Communion',
-    chorus: 'This is my story, this is my song, Praising my Saviour all the day long; This is my story, this is my song, Praising my Saviour all the day long.',
-    verses: [
-      'Blessed assurance, Jesus is mine.	Oh, what a foretaste of glory Divine.	Heir of salvation, purchase of God,	Born of the spirit, washed in his blood.',
-      'Perfect submission, perfect delight,	Visions of rapture now burst on my sight;	Angels descending, bring from above	Echoes of mercy, whispers of love.',
-      'Perfect submission, all is at rest,	I in my Saviour am happy and blest;	Watching and waiting, looking above, Filled with his goodness, lost in his love.',
-    ]
-  }
 ]

@@ -23,7 +23,18 @@
       </ul>
 
       <div class="ml-2 hymn-categories">
-        <div class="mb-5">
+
+        <div class="mb-5"  v-for="(hymnCategory, i) in hymnCategories" :key="i">
+          <input v-model="filterByCategory" type="radio" :id = hymnCategory.id :value = hymnCategory.id :name = hymnCategory.category>
+          <label :for= hymnCategory.id >{{hymnCategory.id}} Hymns</label>
+        </div>
+
+        <!-- <div class="mb-5">
+          <input type="radio" name="category" id="all" value="all">
+          <label for="all">All Hymns</label>
+        </div>
+
+         <div class="mb-5">
           <input type="radio" name="category" id="entrance" value="entrance">
           <label for="entrance">Entrance Hymns</label>
         </div>
@@ -34,8 +45,8 @@
         </div>
 
         <div class="mb-5">
-          <input type="radio" name="category" id="consercation" value="consercation">
-          <label for="consercation">Consercation Hymns</label>
+          <input type="radio" name="category" id="consecration" value="consecration">
+          <label for="consecration">Consecration Hymns</label>
         </div>
 
         <div class="mb-5">
@@ -51,7 +62,7 @@
         <div class="mb-5">
           <input type="radio" name="category" id="indigenous" value="indigenous">
           <label for="indigenous">Indigenous Songs</label>
-        </div>
+        </div> -->
 
       </div>
     </nav>
@@ -63,6 +74,36 @@
 export default {
     data() {
         return {
+          hymnCategories: [
+            {
+              id: 'all',
+              name: 'category'
+            },
+             {
+              id: 'entrance',
+              name: 'category'
+            },
+             {
+              id: 'offertory',
+              name: 'category'
+            },
+            {
+              id: 'consecration',
+              name: 'category'
+            },
+            {
+              id: 'communion',
+              name: 'category'
+            },
+            {
+              id: 'closing',
+              name: 'category'
+            },
+            {
+              id: 'indigenous',
+              name: 'category'
+            }
+         ]
         }
     },
 }
@@ -131,6 +172,7 @@ export default {
        padding-left: 10px;
        font-weight: 700;
        font-size: 0.9rem;
+       text-transform: capitalize;
 
      }
 
