@@ -2,8 +2,7 @@
   <div>
     <nav id="mySidenav" class="sidenav">
       <ul class="navbar-nav">
-        <router-link id="home" class="nav-link" to="/" tag="li" active-class="active" exact>
-          Home</router-link>
+        <router-link id="home" class="nav-link" to="/" tag="li" active-class="active" exact> <img class="mr-5" src="../assets/Img/hymn-icon.png" alt="hymn"><span class="menu-title">Home</span> </router-link>
 
         <!-- <router-link id="hymn" class="nav-link" to="/Hymn" tag="li" active-class="active" exact>
                 Hymns</router-link> -->
@@ -74,6 +73,7 @@
 export default {
     data() {
         return {
+          filterByCategory: null,
           hymnCategories: [
             {
               id: 'all',
@@ -106,6 +106,11 @@ export default {
          ]
         }
     },
+       methods: {
+         selectCategory() {
+            this.$emit('checked', this.filterByCategory)
+         }
+        },
 }
 </script>
 
@@ -133,7 +138,7 @@ export default {
          font-size: 1.2rem;
          /* color: #818181; */
          color: #000;
-         display: block;
+         display: flex;
          transition: 0.3s;
          text-align: left;
         /* list-style-type: circle !important; */
@@ -158,7 +163,7 @@ export default {
      }
 
      #mySidenav .navbar-nav .nav-link {
-         padding-left: 40px !important;
+         padding-left: 20px !important;
          color: #000;
          text-align: left;
          font-weight: 700;
@@ -192,5 +197,11 @@ export default {
      .closebtn:hover {
          text-decoration: none;
          color: rgb(253, 179, 42);
+     }
+
+     #mySidenav img {
+       width: 30px;
+       height: 30px;
+       display: flex;
      }
 </style>

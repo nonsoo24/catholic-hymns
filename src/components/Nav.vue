@@ -1,14 +1,21 @@
 <template>
   <div>
     <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6 w-full">
-      <div class="flex items-center flex-shrink-0 text-white title">
-        <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
-          </svg>
-        <span class="font-semibold text-xl tracking-tight logo-text mr-6">Catholic Hymns</span>
 
+      <!-- logo -->
+        <router-link to="/">
+          <div class="flex items-center flex-shrink-0 text-white title">
+            <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
+            </svg>
+            <span class="font-semibold text-xl tracking-tight logo-text mr-6">Catholic Hymns</span>
+          </div>
+        </router-link>
+
+            <!-- hamburger icon -->
+              <div class="flex items-center flex-shrink-0 text-white title">
         <svg @click="toggle()" class="hambuger ml-2" viewBox="0 0 100 80" width="25" height="25" fill="#fff" stroke="#fff">
                     <rect width="100" height="10" rx="8"></rect>
                     <rect y="30" width="100" height="10" rx="8"></rect>
@@ -57,15 +64,25 @@ export default {
             let sideBar = document.getElementById("mySidenav");
             let text = document.querySelector(".logo-text");
             let hambuger = document.querySelector(".hambuger");
+            let menuTitle = document.querySelector(".menu-title")
+            let hymnCategory = document.querySelector(".hymn-categories")
+            let catholicHymn = document.querySelector(".catholic-hymns")
+            // let menuTitle = document.querySelectorAll(".menu-title")
             if (!this.isClose) {
                 //sideBar.classList.add("is-open");
                 sideBar.style.width = '220px'
-                text.style.display = "block"
+                //text.style.display = "block"
+                 hymnCategory.style.display = "block"
+                 menuTitle.style.display = "block"
+                 catholicHymn.style.marginLeft = "300px"
                 //hambuger.style.display = "none"
             } else {
                 // sideBar.classList.remove("is-open");
                 sideBar.style.width = '70px'
-                 text.style.display = "none"
+                 //text.style.display = "none"
+                 hymnCategory.style.display = "none"
+                 menuTitle.style.display = "none"
+                 catholicHymn.style.marginLeft = "150px"
                 // hambuger.style.display = "block"
             }
             this.isClose = !this.isClose

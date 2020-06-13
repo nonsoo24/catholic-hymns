@@ -9,15 +9,20 @@
           class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-9/12 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black-500"
           placeholder="Search Hymns"> -->
 
-        <div class="hymns  w-9/12" v-for="(hymn, i) in hymns" :key="i">
+        <div class="hymns  w-9/12" v-for="(hymn, i) in hymns" :key="i" id="panzoom-element">
           <h5 class="font-bold mb-6"> {{hymn.title}}</h5>
           <h6 class="font-bold mb-3 mt-4 chorus"> Chorus: </h6>
-          <p class="mb-6">
+          <p class="mb-6 chorus-body">
             {{hymn.chorus}}
           </p>
           <ol>
             <li v-for="(verse, i) in hymn.verses" :key="i">{{hymn.verses[i]}}</li>
           </ol>
+        </div>
+
+         <div class="command">
+            <button @click="zoom(1)"><span class="ti-zoom-in ti-3x"></span> </button>
+            <button @click="zoom(-1)"><span class="ti-zoom-out ti-3x"></span></button>
         </div>
       </div>
     </section>
@@ -28,9 +33,8 @@
 // @ is an alias to /src
 import Nav from '@/components/Nav.vue';
 import SideNavBar from '@/components/SideNavBar.vue'
-import {
-  HymnList
-} from '@/components/Hymn.js'
+import Panzoom from '@panzoom/panzoom'
+import {HymnList} from '@/components/Hymn.js'
 
 export default {
 
@@ -45,16 +49,16 @@ export default {
     SideNavBar
   },
 
-  //  methods: {
-  //    hymnDetails () {
-  //     debugger
-  //      let hymnn = this.hymns.find((e) => e.id == id)
-  //      for(let i = 0; i < this.hymns.length; i++) {
-  //        console.log(this.hymns[i].verses)
-  //      }
-  //    }
+   props: {
+        options: {type: Object, default: () => {}},
+    },
 
-  //  },
+   methods: {
+       zoom(level){
+            level === -1 ? this.panzoom.zoomOut() : this.panzoom.zoomIn()
+        }
+
+   },
   created() {
     let hymnId = this.$route.params.id;
     HymnList.forEach(hymn => {
@@ -71,7 +75,11 @@ export default {
             let chorus = document.querySelector('.chorus');
             chorus.style.display = 'none'
         }
-      })
+      }),
+
+       this.panzoom = Panzoom(document.getElementById('panzoom-element'), {
+            maxScale: 2
+        })
   }
 }
 </script>
@@ -95,4 +103,24 @@ export default {
   span {
     padding-right: 30px;
   }
+
+   .command {
+    position: fixed;
+    left: 1150px;
+    top: 520px;
+  }
+
+  .command span {
+    padding-right: 15px;
+  }
+
+  [class^="ti-"], [class*=" ti-"] {
+    font-size: 30px;
+}
+/* .chorus-body {
+  text-wrap: balance;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+} */
 </style>
