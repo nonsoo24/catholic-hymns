@@ -27,6 +27,13 @@ export default {
   padding: 30px;
 } */
 
+html,
+body {
+  max-width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
 #nav a {
   font-weight: bold;
   color: #2c3e50;

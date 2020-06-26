@@ -20,49 +20,13 @@
             </router-link> -->
 
       </ul>
-
+        <!-- <hymnCategory @update:option="optionUpdate" /> -->
       <div class="ml-2 hymn-categories">
-
         <div class="mb-5"  v-for="(hymnCategory, i) in hymnCategories" :key="i">
-          <input v-model="filterByCategory" type="radio" :id = hymnCategory.id :value = hymnCategory.id :name = hymnCategory.category>
+          <input v-model="selectedCategory" type="radio" :id = hymnCategory.id :value = hymnCategory.id :name = hymnCategory.category  v-on:change="category">
+
           <label :for= hymnCategory.id >{{hymnCategory.id}} Hymns</label>
         </div>
-
-        <!-- <div class="mb-5">
-          <input type="radio" name="category" id="all" value="all">
-          <label for="all">All Hymns</label>
-        </div>
-
-         <div class="mb-5">
-          <input type="radio" name="category" id="entrance" value="entrance">
-          <label for="entrance">Entrance Hymns</label>
-        </div>
-
-        <div class="mb-5">
-          <input type="radio" name="category" id="offertory" value="offertory">
-          <label for="offertory">Offertory Hymns</label>
-        </div>
-
-        <div class="mb-5">
-          <input type="radio" name="category" id="consecration" value="consecration">
-          <label for="consecration">Consecration Hymns</label>
-        </div>
-
-        <div class="mb-5">
-          <input type="radio" name="category" id="communion" value="communion">
-          <label for="communion">Communion Hymns</label>
-        </div>
-
-        <div class="mb-5">
-          <input type="radio" name="category" id="closing" value="closing">
-          <label for="closing">Closing Hymns</label>
-        </div>
-
-        <div class="mb-5">
-          <input type="radio" name="category" id="indigenous" value="indigenous">
-          <label for="indigenous">Indigenous Songs</label>
-        </div> -->
-
       </div>
     </nav>
   </div>
@@ -70,47 +34,55 @@
 
 
 <script>
+//import hymnCategory from './Category.vue'
 export default {
-    data() {
-        return {
-          filterByCategory: null,
-          hymnCategories: [
-            {
-              id: 'all',
-              name: 'category'
-            },
-             {
-              id: 'entrance',
-              name: 'category'
-            },
-             {
-              id: 'offertory',
-              name: 'category'
-            },
-            {
-              id: 'consecration',
-              name: 'category'
-            },
-            {
-              id: 'communion',
-              name: 'category'
-            },
-            {
-              id: 'closing',
-              name: 'category'
-            },
-            {
-              id: 'indigenous',
-              name: 'category'
-            }
-         ]
-        }
-    },
-       methods: {
-         selectCategory() {
-            this.$emit('checked', this.filterByCategory)
-         }
+  data() {
+    return {
+      selectedCategory: null,
+      hymnCategories: [{
+          id: 'all',
+          name: 'category'
         },
+        {
+          id: 'entrance',
+          name: 'category'
+        },
+        {
+          id: 'offertory',
+          name: 'category'
+        },
+        {
+          id: 'consecration',
+          name: 'category'
+        },
+        {
+          id: 'communion',
+          name: 'category'
+        },
+        {
+          id: 'closing',
+          name: 'category'
+        },
+        {
+          id: 'indigenous',
+          name: 'category'
+        }
+      ]
+    }
+  },
+  // components: {
+  //   hymnCategory
+  // },
+
+  methods: {
+    // optionUpdate(value) {
+    //   alert(value)
+    // }
+
+    category(value) {
+      this.$emit('update', this.selectedCategory);
+    }
+  },
 }
 </script>
 

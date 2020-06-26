@@ -4,26 +4,26 @@
     <SideNavBar />
     <section>
       <div class="catholic-hymns">
-        <!-- <span class="ti-search"></span>  -->
-        <!-- <input type="text"
-          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-9/12 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black-500"
-          placeholder="Search Hymns"> -->
+        <!-- <div class="hymns  w-9/12" id="panzoom-element"> -->
+        <div class="hymns  w-9/12">
+          <h5 class="font-bold mb-6"> <span>{{hymns.number}}.</span> {{hymns.title}}</h5>
 
-        <div class="hymns  w-9/12" v-for="(hymn, i) in hymns" :key="i" id="panzoom-element">
-          <h5 class="font-bold mb-6"> {{hymn.title}}</h5>
-          <h6 class="font-bold mb-3 mt-4 chorus"> Chorus: </h6>
-          <p class="mb-6 chorus-body">
-            {{hymn.chorus}}
-          </p>
+          <div id="chorus">
+            <h6 class="font-bold mb-3 mt-4"> Chorus: </h6>
+            <p class="mb-6 chorus-body">
+              {{hymns.chorus}}
+            </p>
+          </div>
+
           <ol>
-            <li v-for="(verse, i) in hymn.verses" :key="i">{{hymn.verses[i]}}</li>
+            <li v-for="(hymn, i) in hymns.verses" :key="i">{{hymn.verse}}</li>
           </ol>
         </div>
 
-         <div class="command">
-            <button @click="zoom(1)"><span class="ti-zoom-in ti-3x"></span> </button>
-            <button @click="zoom(-1)"><span class="ti-zoom-out ti-3x"></span></button>
-        </div>
+        <!-- <div class="command">
+          <button @click="zoom(1)"><span class="ti-zoom-in ti-3x"></span> </button>
+          <button @click="zoom(-1)"><span class="ti-zoom-out ti-3x"></span></button>
+        </div> -->
       </div>
     </section>
   </div>
@@ -33,14 +33,14 @@
 // @ is an alias to /src
 import Nav from '@/components/Nav.vue';
 import SideNavBar from '@/components/SideNavBar.vue'
-import Panzoom from '@panzoom/panzoom'
+//import Panzoom from '@panzoom/panzoom'
 import {HymnList} from '@/components/Hymn.js'
 
 export default {
 
   data() {
     return {
-      hymns: [],
+      hymns: {}
     }
   },
   name: 'Home',
@@ -49,37 +49,134 @@ export default {
     SideNavBar
   },
 
-   props: {
-        options: {type: Object, default: () => {}},
+  // props: {
+  //   options: {
+  //     type: Object,
+  //     default: () => {}
+  //   },
+  // },
+
+  methods: {
+    // zoom(level) {
+    //   level === -1 ? this.panzoom.zoomOut() : this.panzoom.zoomIn()
+    // },
+
+    getHymnProperty() {
+      // debugger
+      //get hymn id from URL
+      var routeParams = this.$route.params._id;
+
+      //get hymn details from local storage, convert it to object and assign it to a variable
+      var details = JSON.parse(localStorage.getItem('hymnProperty'));
+
+      //get id of chorus div and assign it to a variable
+      let chorusDiv = document.querySelector('#chorus')
+
+      //checks if hymn details from local storage is not null
+      if (details != null) {
+        //Finds hymn id from details and checks if hymn id from details is the same as hymn id from URL
+        var idFound = details.find(ele => ele._id == routeParams);
+
+        if (idFound) {
+          this.hymns = idFound;
+
+          //checks if hymn object contains chorus then hide or show the chorus div
+          this.hymns.hasOwnProperty('chorus') ? chorusDiv.style.display = 'block' : chorusDiv.style.display = 'none';
+
+          //if hymn id from details doesn't match that from URL then it goes to fetch from the DB
+        } else {
+          fetch("https://catholic-hymns.herokuapp.com/hymns/" + this.$route.params._id)
+            .then(response => response.json())
+            .then(data => {
+            let newhymn = {}
+
+            // checks if the data coming contains chorus then re-assigns data object to newhymn
+            if(data.hasOwnProperty('chorus')) {
+                newhymn = {
+                  _id: data._id,
+                  title: data.title,
+                  number: data.number,
+                  chorus: data.chorus.chorus,
+                  verses: data.verses
+                }
+            } else {
+                newhymn = {
+                  _id: data._id,
+                  title: data.title,
+                  number: data.number,
+                  verses: data.verses
+                }
+            }
+
+              var localHymns = JSON.parse(localStorage.getItem('hymnProperty'));
+              if (localHymns == null) {
+                debugger
+                localHymns = [];
+                localHymns.push(newhymn);
+                localStorage.setItem('hymnProperty', JSON.stringify(localHymns));
+                this.hymns = newhymn;
+
+              } else {
+                localHymns.push(newhymn);
+                localStorage.setItem('hymnProperty', JSON.stringify(localHymns));
+                this.hymns = newhymn;
+              }
+
+              this.hymns.hasOwnProperty('chorus') ? chorusDiv.style.display = 'block' : chorusDiv.style.display = 'none';
+
+            })
+            .catch(error => console.error(error))
+        }
+      // if details from local storage is null, it goes to fetch from the DB
+      } else {
+        fetch("https://catholic-hymns.herokuapp.com/hymns/" + this.$route.params._id)
+          .then(response => response.json())
+          .then(data => {
+            let newhymn = {};
+            if(data.hasOwnProperty('chorus')) {
+              newhymn = {
+                _id: data._id,
+                title: data.title,
+                number: data.number,
+                chorus: data.chorus.chorus,
+                verses: data.verses
+              }
+            } else {
+               newhymn = {
+                _id: data._id,
+                title: data.title,
+                number: data.number,
+                verses: data.verses
+              }
+            }
+
+            var localHymns = JSON.parse(localStorage.getItem('hymnProperty'));
+            if (localHymns == null) {
+              localHymns = [];
+              localHymns.push(newhymn);
+              localStorage.setItem('hymnProperty', JSON.stringify(localHymns));
+              this.hymns = newhymn;
+            } else {
+              localHymns.push(newhymn);
+              localStorage.setItem('hymnProperty', JSON.stringify(localHymns));
+              this.hymns = newhymn;
+            }
+
+            this.hymns.hasOwnProperty('chorus') ? chorusDiv.style.display = 'block' : chorusDiv.style.display = 'none';
+
+          })
+          .catch(error => console.error(error))
+      }
+    }
     },
 
-   methods: {
-       zoom(level){
-            level === -1 ? this.panzoom.zoomOut() : this.panzoom.zoomIn()
-        }
 
-   },
-  created() {
-    let hymnId = this.$route.params.id;
-    HymnList.forEach(hymn => {
-        if (hymn.id == hymnId) {
-          this.hymns.push(hymn);
-        }
-    })
-  },
-  // updated() {},
   mounted() {
-    this.hymns.forEach(hymn => {
-        //debugger
-        if (hymn.chorus == '') {
-            let chorus = document.querySelector('.chorus');
-            chorus.style.display = 'none'
-        }
-      }),
-
-       this.panzoom = Panzoom(document.getElementById('panzoom-element'), {
-            maxScale: 2
-        })
+     //debugger
+    this.getHymnProperty()
+    // this.panzoom = Panzoom(document.getElementById('panzoom-element'), {
+    //   maxScale: 2
+    // })
   }
 }
 </script>
@@ -117,10 +214,4 @@ export default {
   [class^="ti-"], [class*=" ti-"] {
     font-size: 30px;
 }
-/* .chorus-body {
-  text-wrap: balance;
-  word-break: break-all;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-} */
 </style>

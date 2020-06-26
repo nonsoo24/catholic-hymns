@@ -13,7 +13,7 @@ const routes = [
   },
   {
     //path: '/Hymn',
-    path: "/Hymn/:id",
+    path: "/Hymn/:_id",
     name: 'Hymn',
     // route level code-splitting
     // this generates a separate chunk (hymn.[hash].js) for this route

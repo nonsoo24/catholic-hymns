@@ -5,23 +5,31 @@
       <!-- logo -->
         <router-link to="/">
           <div class="flex items-center flex-shrink-0 text-white title">
-            <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54"
+            <!-- <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54"
               xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
+            </svg> -->
+
+            <svg @click="toggle()" class="hambuger fill-current h-8 w-8 mr-2" viewBox="0 0 100 80"     width="25" height="25" fill="#fff" stroke="#fff">
+                    <rect width="100" height="10" rx="8"></rect>
+                    <rect y="30" width="100" height="10" rx="8"></rect>
+                    <rect y="60" width="100" height="10" rx="8"></rect>
             </svg>
+
+
             <span class="font-semibold text-xl tracking-tight logo-text mr-6">Catholic Hymns</span>
           </div>
         </router-link>
 
             <!-- hamburger icon -->
-              <div class="flex items-center flex-shrink-0 text-white title">
+              <!-- <div class="flex items-center flex-shrink-0 text-white title">
         <svg @click="toggle()" class="hambuger ml-2" viewBox="0 0 100 80" width="25" height="25" fill="#fff" stroke="#fff">
                     <rect width="100" height="10" rx="8"></rect>
                     <rect y="30" width="100" height="10" rx="8"></rect>
                     <rect y="60" width="100" height="10" rx="8"></rect>
         </svg>
-      </div>
+      </div> -->
       <!-- <div class="block lg:hidden">
     <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
       <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
@@ -60,7 +68,6 @@ export default {
 
       methods: {
         toggle() {
-            debugger
             let sideBar = document.getElementById("mySidenav");
             let text = document.querySelector(".logo-text");
             let hambuger = document.querySelector(".hambuger");
