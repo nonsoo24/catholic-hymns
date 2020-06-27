@@ -4,10 +4,9 @@
     <SideNavBar />
     <section>
       <div class="catholic-hymns">
-        <!-- <div class="hymns  w-9/12" id="panzoom-element"> -->
 
         <!-- back arrow  -->
-        <span class="ti-arrow-left" @click="backHome"></span>
+        <span class="ti-arrow-left cursor-pointer font-bold text-lg" @click="backHome"></span>
 
         <!-- hymn div -->
         <div class="hymns  w-9/12">
@@ -24,15 +23,11 @@
           </div>
 
           <!-- hymn verses -->
-          <ol>
-            <li v-for="(hymn, i) in hymns.verses" :key="i">{{hymn.verse}}</li>
+          <ol class="list-decimal">
+            <li v-for="(hymn, i) in hymns.verses" :key="i" class="p-5">{{hymn.verse}}</li>
           </ol>
-        </div>
 
-        <!-- <div class="command">
-          <button @click="zoom(1)"><span class="ti-zoom-in ti-3x"></span> </button>
-          <button @click="zoom(-1)"><span class="ti-zoom-out ti-3x"></span></button>
-        </div> -->
+        </div>
       </div>
     </section>
   </div>
@@ -42,7 +37,6 @@
 // @ is an alias to /src
 import Nav from '@/components/Nav.vue';
 import SideNavBar from '@/components/SideNavBar.vue'
-//import Panzoom from '@panzoom/panzoom'
 import {HymnList} from '@/components/Hymn.js'
 
 export default {
@@ -58,18 +52,7 @@ export default {
     SideNavBar
   },
 
-  // props: {
-  //   options: {
-  //     type: Object,
-  //     default: () => {}
-  //   },
-  // },
-
   methods: {
-    // zoom(level) {
-    //   level === -1 ? this.panzoom.zoomOut() : this.panzoom.zoomIn()
-    // },
-
     backHome() {
       this.$router.push({
         path: '/'
@@ -191,11 +174,7 @@ export default {
 
 
   mounted() {
-    //debugger
     this.getHymnProperty()
-    // this.panzoom = Panzoom(document.getElementById('panzoom-element'), {
-    //   maxScale: 2
-    // })
   }
 }
 </script>
@@ -209,35 +188,14 @@ export default {
     padding: 30px 15px 60px 15px;
   }
 
-  ol {
-    list-style-type: decimal;
-  }
-
-  .hymns li {
-    padding: 20px 20px;
-  }
-
   span {
-    padding-right: 30px;
-  }
-
-  .command {
-    position: fixed;
-    left: 1150px;
-    top: 520px;
-  }
-
-  .command span {
-    padding-right: 15px;
+    padding-right: 20px;
   }
 
   [class^="ti-"],
   [class*=" ti-"] {
-    font-size: 18px;
-    font-weight: 700;
     position: absolute;
     left: 240px;
     top: 152px;
-    cursor: pointer;
   }
 </style>

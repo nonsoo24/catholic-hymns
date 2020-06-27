@@ -109,7 +109,7 @@ export default {
          text-decoration: none !important;
          font-size: 1.2rem;
          /* color: #818181; */
-         color: #000;
+         color: #000 !important;
          display: flex;
          transition: 0.3s;
          text-align: left;
@@ -120,9 +120,9 @@ export default {
          cursor: pointer;
      }
 
-     .router-link-exact-active {
-         color: rgb(253, 179, 42) !important;
-     }
+     /* .router-link-exact-active {
+         color: #fff !important;
+     } */
 
      @media screen and (max-height: 450px) {
          /* .sidenav {
