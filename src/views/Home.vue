@@ -32,9 +32,9 @@
 
         <!-- Hymn List div -->
         <div class="hymns w-11/12">
-          <ol class="list-decimal">
+          <ol class="">
             <li v-for="(hymn, i) in myFilters" :key="i" @click="hymnLink(hymn._id)"
-              class="cursor-pointer p-5 border-b border-black">
+              class="cursor-pointer p-5 border-b border-black"> <span>{{hymn.number}}.</span>
               {{hymn.title}} </li>
           </ol>
         </div>
@@ -124,7 +124,7 @@ export default {
           })
 
           // sort hymn title alphabetically
-          this.hymns.sort((a, b) => (a.title > b.title) ? 1 : -1)
+          this.hymns.sort((a, b) => (a.number > b.number) ? 1 : -1)
         })
         .catch(error => console.error(error))
 
