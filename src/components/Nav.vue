@@ -79,18 +79,18 @@ export default {
             // let menuTitle = document.querySelectorAll(".menu-title")
             if (!this.isClose) {
                 //sideBar.classList.add("is-open");
-                sideBar.style.width = '220px'
+                sideBar.style.width = '70px'
                 //text.style.display = "block"
-                 hymnCategory.style.display = "block"
-                 menuTitle.style.display = "block"
+                 hymnCategory.style.display = "none"
+                 menuTitle.style.display = "none"
                 //  catholicHymn.style.marginLeft = "300px"
                 //hambuger.style.display = "none"
             } else {
                 // sideBar.classList.remove("is-open");
-                sideBar.style.width = '70px'
+                sideBar.style.width = '220px'
                  //text.style.display = "none"
-                 hymnCategory.style.display = "none"
-                 menuTitle.style.display = "none"
+                 hymnCategory.style.display = "block"
+                 menuTitle.style.display = "block"
                 //  catholicHymn.style.marginLeft = "150px"
                 // hambuger.style.display = "block"
             }

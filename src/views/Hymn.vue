@@ -5,14 +5,17 @@
     <section>
       <div class="catholic-hymns">
 
-        <!-- back arrow  -->
-        <span class="ti-arrow-left cursor-pointer font-bold text-lg" @click="backHome"></span>
 
         <!-- hymn div -->
         <div class="hymns  w-11/12">
 
-          <!-- hymn number and title -->
+          <div class="flex">
+             <!-- back arrow  -->
+        <!-- <span class="ti-arrow-left cursor-pointer font-bold text-lg mt-1" @click="backHome"></span> -->
+                  <!-- hymn number and title -->
           <h5 class="font-bold mb-6"><span>{{hymns.number}}.</span> {{hymns.title}}</h5>
+          </div>
+
 
           <!-- chorus div -->
           <div id="chorus">
@@ -23,9 +26,11 @@
           </div>
 
           <!-- hymn verses -->
-          <ol class="list-decimal">
-            <li v-for="(hymn, i) in hymns.verses" :key="i" class="p-5">{{hymn.verse}}</li>
-          </ol>
+          <div id="verses">
+            <ol class="list-decimal">
+              <li v-for="(hymn, i) in hymns.verses" :key="i" class="p-5">{{hymn.verse}}</li>
+            </ol>
+          </div>
 
         </div>
       </div>
@@ -171,106 +176,66 @@ export default {
       }
     }
   },
-
-
-  mounted() {
+  created() {
     this.getHymnProperty()
   }
+
+  // mounted() {
+  //   this.getHymnProperty()
+  // }
 }
 </script>
 
 <style>
- @media only screen and (min-width:320px) {
-   .catholic-hymns {
-     margin: 130px 0 0 90px;
-   }
- }
+@media only screen and (min-width:320px) {
+    .catholic-hymns {
+      margin: 110px 0 0 90px;
+    }
+  }
 
- /* Medium devices (landscape tablets, 768px and up) */
- @media only screen and (min-width: 768px) {
-   .catholic-hymns {
-     margin: 130px 0 0 90px;
-   }
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .catholic-hymns {
+      margin: 110px 0 0 90px;
+    }
 
- }
+  }
 
- /* Large devices (laptops/desktops, 992px and up) */
- @media only screen and (min-width: 992px) {
-   .catholic-hymns {
-     margin: 130px 0 0 300px;
-   }
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .catholic-hymns {
+      margin: 110px 0 0 250px;
+    }
 
- }
+  }
 
- /* Extra large devices (large laptops and desktops, 1200px and up) */
- @media only screen and (min-width: 1200px) {
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
 
-   .catholic-hymns {
-     margin: 130px 0 0 300px;
-   }
+    .catholic-hymns {
+      margin: 110px 0 0 300px;
+    }
 
- }
+  }
 
- @media only screen and (min-width:320px) {
-   .hymns {
-     padding: 2px 1px 0px 15px;
-   }
- }
+  @media only screen and (min-width:320px) {
+    .hymns {
+      padding: 30px 1px 0px 15px;
+    }
+  }
 
- @media only screen and (min-width: 992px) {
-   .hymns {
-     padding: 30px 15px 60px 15px;
-   }
+  @media only screen and (min-width: 992px) {
+    .hymns {
+      padding: 30px 15px 60px 15px;
+    }
 
- }
+  }
 
  span {
-   padding-right: 20px;
+   padding-right: 10px;
  }
 
- @media only screen and (min-width:320px) {
-
-   [class^="ti-"],
-   [class*=" ti-"] {
-     position: absolute;
-     left: 80px;
-     top: 134px;
-   }
- }
-
- /* Medium devices (landscape tablets, 768px and up) */
- @media only screen and (min-width: 768px) {
-
-   [class^="ti-"],
-   [class*=" ti-"] {
-     position: absolute;
-     left: 80px;
-     top: 162px;
-   }
-
- }
-
- /* Large devices (laptops/desktops, 992px and up) */
- @media only screen and (min-width: 992px) {
-
-   [class^="ti-"],
-   [class*=" ti-"] {
-     position: absolute;
-     left: 240px;
-     top: 162px;
-   }
-
- }
-
- /* Extra large devices (large laptops and desktops, 1200px and up) */
- @media only screen and (min-width: 1200px) {
-
-   [class^="ti-"],
-   [class*=" ti-"] {
-     position: absolute;
-     left: 240px;
-     top: 162px;
-   }
-
- }
+ /* #chorus, #verses {
+   margin-left: 80px;
+ } */
 </style>

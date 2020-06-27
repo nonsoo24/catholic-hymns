@@ -100,7 +100,7 @@ export default {
          transition: 0.5s;
          padding-top: 115px;
          top: 0;
-         width: 220px;
+         width: 70px;
          border-right: 1px solid #000;
      }
   }
@@ -121,7 +121,7 @@ export default {
          transition: 0.5s;
          padding-top: 115px;
          top: 0;
-         width: 220px;
+         width: 70px;
          border-right: 1px solid #000;
      }
 
@@ -142,7 +142,7 @@ export default {
          transition: 0.5s;
          padding-top: 130px;
          top: 0;
-         width: 220px;
+         width: 70px;
          border-right: 1px solid #000;
      }
 
@@ -178,8 +178,13 @@ export default {
          font-weight: 700;
      }
 
+     .menu-title {
+       display: none;
+     }
+
      .hymn-categories {
        padding: 90px 0 0 20px;
+       display: none;
      }
 
      .hymn-categories label {

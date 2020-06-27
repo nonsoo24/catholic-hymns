@@ -118,25 +118,29 @@ export default {
         .then(response => response.json())
         .then(data => {
           localStorage.setItem('hymns', JSON.stringify(data));
+          var newHymn = JSON.parse(localStorage.getItem('hymns'));
+          newHymn.forEach(hymn => {
+            this.hymns.push(hymn);
+          })
+
+          // sort hymn title alphabetically
+          this.hymns.sort((a, b) => (a.title > b.title) ? 1 : -1)
         })
         .catch(error => console.error(error))
 
       // checks if local storage is empty before pushing data coming from API to hymns array
-      if (localStorage.getItem('hymns') != null) {
-        var data = JSON.parse(localStorage.getItem('hymns'));
-        data.forEach(hymn => {
-          this.hymns.push(hymn);
-        })
+      // if (localStorage.getItem('hymns') != null) {
 
-        // sort hymn title alphabetically
-        this.hymns.sort((a, b) => (a.title > b.title) ? 1 : -1)
-      }
+      // }
     }
-  },
+    },
 
-  mounted() {
+  created() {
     this.getHymn();
-  },
+  }
+  // mounted() {
+  //   this.getHymn();
+  // },
 };
 </script>
 
