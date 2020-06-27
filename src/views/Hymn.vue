@@ -10,10 +10,12 @@
         <div class="hymns  w-11/12">
 
           <div class="flex">
-             <!-- back arrow  -->
-        <!-- <span class="ti-arrow-left cursor-pointer font-bold text-lg mt-1" @click="backHome"></span> -->
-                  <!-- hymn number and title -->
-          <h5 class="font-bold mb-6"><span>{{hymns.number}}.</span> {{hymns.title}}</h5>
+            <!-- back arrow  -->
+            <!-- <span class="cursor-pointer font-bold text-lg mt-1" @click="backHome">
+              <figure> <img src="../assets/Img/back.svg" alt="back-arrow"> </figure>
+            </span> -->
+            <!-- hymn number and title -->
+            <h5 class="font-bold mb-6"><span>{{hymns.number}}.</span> {{hymns.title}}</h5>
           </div>
 
 
@@ -66,7 +68,6 @@ export default {
     },
 
     getHymnProperty() {
-      debugger
       //get hymn id from URL
       var routeParams = this.$route.params._id;
 

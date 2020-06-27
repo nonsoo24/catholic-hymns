@@ -14,8 +14,8 @@
           <div class="relative">
             <span class="" style="position: relative;">
               <input type="text"
-                class="transition-colors duration-100 ease-in-out focus:outline-0 border border-transparent focus:bg-white focus:border-gray-300 placeholder-gray-600 rounded-lg bg-gray-200 pr-4 pl-10 py-2 w-11/12 py-2 px-4 text-gray-700 leading-normal ds-input"
-                placeholder="Search..." v-model="searchQuery">
+                class="transition-colors duration-100 ease-in-out focus:outline-0 border border-transparent focus:bg-white focus:border-gray-300 placeholder-gray-600 rounded-lg bg-gray-200 pr-4 pl-10 py-2 w-11/12 py-2 px-4 text-gray-700 leading-normal ds-input" name="search" id="search"
+                placeholder="Search..." v-model="searchQuery" aria-label="Search">
             </span>
 
             <!-- search icon -->
