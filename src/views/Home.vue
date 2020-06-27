@@ -135,12 +135,12 @@ export default {
     }
     },
 
-  created() {
-    this.getHymn();
-  }
-  // mounted() {
+  // created() {
   //   this.getHymn();
-  // },
+  // }
+  mounted() {
+    this.getHymn();
+  },
 };
 </script>
 
