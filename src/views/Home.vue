@@ -14,8 +14,8 @@
           <div class="relative">
             <span class="" style="position: relative;">
               <input type="text"
-                class="transition-colors duration-100 ease-in-out focus:outline-0 border border-transparent focus:bg-white focus:border-gray-300 placeholder-gray-600 rounded-lg bg-gray-200 pr-4 pl-10 py-2 w-11/12 py-2 px-4 text-gray-700 leading-normal ds-input"
-                placeholder="Search..." v-model="searchQuery">
+                class="transition-colors duration-100 ease-in-out focus:outline-0 border border-transparent focus:bg-white focus:border-gray-300 placeholder-gray-600 rounded-lg bg-gray-200 pr-4 pl-10 py-2 w-11/12 py-2 px-4 text-gray-700 leading-normal ds-input" name="search" id="search"
+                placeholder="Search..." v-model="searchQuery" aria-label="Search">
             </span>
 
             <!-- search icon -->
@@ -32,9 +32,9 @@
 
         <!-- Hymn List div -->
         <div class="hymns w-11/12">
-          <ol class="list-decimal">
+          <ol class="">
             <li v-for="(hymn, i) in myFilters" :key="i" @click="hymnLink(hymn._id)"
-              class="cursor-pointer p-5 border-b border-black">
+              class="cursor-pointer p-5 border-b border-black"> <span>{{hymn.number}}.</span>
               {{hymn.title}} </li>
           </ol>
         </div>
@@ -118,16 +118,16 @@ export default {
         .then(response => response.json())
         .then(data => {
           localStorage.setItem('hymns', JSON.stringify(data));
-          var newHymn = JSON.parse(localStorage.getItem('hymns'));
+        })
+        .catch(error => console.error(error))
+
+         var newHymn = JSON.parse(localStorage.getItem('hymns'));
           newHymn.forEach(hymn => {
             this.hymns.push(hymn);
           })
 
           // sort hymn title alphabetically
-          this.hymns.sort((a, b) => (a.title > b.title) ? 1 : -1)
-        })
-        .catch(error => console.error(error))
-
+          this.hymns.sort((a, b) => (a.number > b.number) ? 1 : -1)
       // checks if local storage is empty before pushing data coming from API to hymns array
       // if (localStorage.getItem('hymns') != null) {
 
@@ -171,7 +171,7 @@ export default {
   @media only screen and (min-width: 1200px) {
 
     .catholic-hymns {
-      margin: 130px 0 0 300px;
+      margin: 110px 0 0 300px;
     }
 
   }
