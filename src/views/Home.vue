@@ -8,16 +8,17 @@
     <SideNavBar @update="filterHymns" />
 
     <section>
-      <div class="catholic-hymns container">
+      <div class="catholic-hymns">
         <!-- search input field -->
         <div>
           <div class="relative">
             <span class="" style="position: relative;">
               <input type="text"
-                class="transition-colors duration-100 ease-in-out focus:outline-0 border border-transparent focus:bg-white focus:border-gray-300 placeholder-gray-600 rounded-lg bg-gray-200 pr-4 pl-10 py-2 w-9/12 py-2 px-4 text-gray-700 leading-normal ds-input"
+                class="transition-colors duration-100 ease-in-out focus:outline-0 border border-transparent focus:bg-white focus:border-gray-300 placeholder-gray-600 rounded-lg bg-gray-200 pr-4 pl-10 py-2 w-11/12 py-2 px-4 text-gray-700 leading-normal ds-input"
                 placeholder="Search..." v-model="searchQuery">
             </span>
 
+            <!-- search icon -->
             <div class="pointer-events-none absolute inset-y-0 left-0 pl-4 flex items-center">
               <svg class="fill-current pointer-events-none text-gray-600 w-4 h-4"
                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -30,7 +31,7 @@
         </div>
 
         <!-- Hymn List div -->
-        <div class="hymns  w-9/12">
+        <div class="hymns w-11/12">
           <ol class="list-decimal">
             <li v-for="(hymn, i) in myFilters" :key="i" @click="hymnLink(hymn._id)"
               class="cursor-pointer p-5 border-b border-black">
@@ -82,7 +83,7 @@ export default {
   },
 
   methods: {
-    //route to hymn page based on hymn ID
+    //route to hymn page by hymn ID
     hymnLink(_id) {
       this.$router.push({
         name: 'Hymn',
@@ -140,13 +141,48 @@ export default {
 </script>
 
 <style scoped>
-  .catholic-hymns {
-    margin: 130px 0 0 300px;
+  @media only screen and (min-width:320px) {
+    .catholic-hymns {
+      margin: 110px 0 0 90px;
+    }
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .catholic-hymns {
+      margin: 110px 0 0 90px;
+    }
 
   }
 
-  .hymns {
-    padding: 30px 15px 60px 15px;
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .catholic-hymns {
+      margin: 110px 0 0 250px;
+    }
+
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+
+    .catholic-hymns {
+      margin: 130px 0 0 300px;
+    }
+
+  }
+
+  @media only screen and (min-width:320px) {
+    .hymns {
+      padding: 30px 1px 0px 15px;
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+    .hymns {
+      padding: 30px 15px 60px 15px;
+    }
+
   }
 
   span {

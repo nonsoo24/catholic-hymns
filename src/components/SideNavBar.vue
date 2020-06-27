@@ -2,7 +2,12 @@
   <div>
     <nav id="mySidenav" class="sidenav">
       <ul class="navbar-nav">
-        <router-link id="home" class="nav-link" to="/" tag="li" active-class="active" exact> <img class="mr-5" src="../assets/Img/hymn-icon.png" alt="hymn"><span class="menu-title">Home</span> </router-link>
+        <router-link id="home" class="nav-link" to="/" tag="li" active-class="active" exact>
+        <figure>
+            <img class="mr-5 flex w-8 h-8" src="../assets/Img/hymn-icon.png" alt="hymn-book">
+        </figure>
+         <span class="menu-title">Home</span>
+        </router-link>
 
         <!-- <router-link id="hymn" class="nav-link" to="/Hymn" tag="li" active-class="active" exact>
                 Hymns</router-link> -->
@@ -25,7 +30,7 @@
         <div class="mb-5"  v-for="(hymnCategory, i) in hymnCategories" :key="i">
           <input v-model="selectedCategory" type="radio" :id = hymnCategory.id :value = hymnCategory.id :name = hymnCategory.category  v-on:change="category">
 
-          <label :for= hymnCategory.id >{{hymnCategory.id}} Hymns</label>
+          <label :for= hymnCategory.id  class="font-bold capitalize">{{hymnCategory.id}} Hymns</label>
         </div>
       </div>
     </nav>
@@ -70,15 +75,8 @@ export default {
       ]
     }
   },
-  // components: {
-  //   hymnCategory
-  // },
 
   methods: {
-    // optionUpdate(value) {
-    //   alert(value)
-    // }
-
     category(value) {
       this.$emit('update', this.selectedCategory);
     }
@@ -87,11 +85,54 @@ export default {
 </script>
 
 <style>
-     .sidenav {
+@media only screen and (min-width:320px) {
+      .sidenav {
          height: 100%;
          width: 0;
          position: fixed;
-         /* z-index: 9999; */
+         z-index: 2;
+         /* top: 0;
+         right: 0; */
+         background-color: #fff;
+         /* box-shadow: 0 0 1px 2px #E2E2E2; */
+         /* opacity: 0.5; */
+         overflow-x: hidden;
+         transition: 0.5s;
+         padding-top: 115px;
+         top: 0;
+         width: 220px;
+         border-right: 1px solid #000;
+     }
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+        .sidenav {
+         height: 100%;
+         width: 0;
+         position: fixed;
+         z-index: 1;
+         /* top: 0;
+         right: 0; */
+         background-color: #fff;
+         /* box-shadow: 0 0 1px 2px #E2E2E2; */
+         /* opacity: 0.5; */
+         overflow-x: hidden;
+         transition: 0.5s;
+         padding-top: 115px;
+         top: 0;
+         width: 220px;
+         border-right: 1px solid #000;
+     }
+
+  }
+
+  @media only screen and (min-width: 992px) {
+        .sidenav {
+         height: 100%;
+         width: 0;
+         position: fixed;
+         z-index: 1;
          /* top: 0;
          right: 0; */
          background-color: #fff;
@@ -105,15 +146,15 @@ export default {
          border-right: 1px solid #000;
      }
 
+  }
+
      .sidenav li {
          text-decoration: none !important;
          font-size: 1.2rem;
-         /* color: #818181; */
          color: #000 !important;
          display: flex;
          transition: 0.3s;
          text-align: left;
-        /* list-style-type: circle !important; */
      }
 
      .sidenav li:hover {
@@ -125,10 +166,6 @@ export default {
      } */
 
      @media screen and (max-height: 450px) {
-         /* .sidenav {
-             padding-top: 15px;
-         } */
-
          .sidenav a {
              font-size: 2rem;
          }
@@ -147,33 +184,16 @@ export default {
 
      .hymn-categories label {
        padding-left: 10px;
-       font-weight: 700;
        font-size: 0.9rem;
-       text-transform: capitalize;
-
      }
 
      #mySidenav .navbar-nav .nav-link:hover {
          color: rgb(253, 179, 42);
      }
 
-     .closebtn {
-         font-size: 2rem;
-         display: none;
-         color: #000;
-         position: absolute;
-         right: 20px;
-         text-decoration: none
-     }
-
-     .closebtn:hover {
-         text-decoration: none;
-         color: rgb(253, 179, 42);
-     }
-
-     #mySidenav img {
+     /* #mySidenav img {
        width: 30px;
        height: 30px;
        display: flex;
-     }
+     } */
 </style>

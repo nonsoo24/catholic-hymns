@@ -4,7 +4,7 @@
 
       <!-- logo -->
           <div class="flex items-center flex-shrink-0 text-white title">
-            <svg @click="toggle()" class="hambuger fill-current h-8 w-8 mr-2" viewBox="0 0 100 80"
+            <svg @click="toggle()" class="hambuger cursor-pointer fill-current h-8 w-8 mr-2" viewBox="0 0 100 80"
               width="25" height="25" fill="#fff" stroke="#fff">
               <rect width="100" height="10" rx="8"></rect>
               <rect y="30" width="100" height="10" rx="8"></rect>
@@ -12,10 +12,10 @@
             </svg>
           </div>
 
-          <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-            <div class="text-sm lg:flex-grow">
+          <div class="w-auto block flex-grow sm:flex sm:items-center lg:flex lg:items-center ml-8">
+            <div class="text-sm lg:flex-grow text-white">
               <router-link to="/">
-                <span class="font-semibold text-xl tracking-tight logo-text mr-6">Catholic
+                <span class="font-semibold text-2xl tracking-tight logo-text text-white">Catholic
                   Hymns</span>
               </router-link>
             </div>
@@ -113,9 +113,4 @@ export default {
   /* .router-link-exact-active {
       color: #fff !important;
   } */
-
-  .hambuger {
-    cursor: pointer;
-  }
-
 </style>

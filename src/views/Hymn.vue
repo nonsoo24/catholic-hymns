@@ -9,7 +9,7 @@
         <span class="ti-arrow-left cursor-pointer font-bold text-lg" @click="backHome"></span>
 
         <!-- hymn div -->
-        <div class="hymns  w-9/12">
+        <div class="hymns  w-11/12">
 
           <!-- hymn number and title -->
           <h5 class="font-bold mb-6"><span>{{hymns.number}}.</span> {{hymns.title}}</h5>
@@ -110,7 +110,7 @@ export default {
 
               var localHymns = JSON.parse(localStorage.getItem('hymnProperty'));
               if (localHymns == null) {
-                debugger
+                // debugger
                 localHymns = [];
                 localHymns.push(newhymn);
                 localStorage.setItem('hymnProperty', JSON.stringify(localHymns));
@@ -180,22 +180,97 @@ export default {
 </script>
 
 <style>
-  .catholic-hymns {
-    margin: 120px 0 0 300px;
-  }
+ @media only screen and (min-width:320px) {
+   .catholic-hymns {
+     margin: 130px 0 0 90px;
+   }
+ }
 
-  .hymns {
-    padding: 30px 15px 60px 15px;
-  }
+ /* Medium devices (landscape tablets, 768px and up) */
+ @media only screen and (min-width: 768px) {
+   .catholic-hymns {
+     margin: 130px 0 0 90px;
+   }
 
-  span {
-    padding-right: 20px;
-  }
+ }
 
-  [class^="ti-"],
-  [class*=" ti-"] {
-    position: absolute;
-    left: 240px;
-    top: 152px;
-  }
+ /* Large devices (laptops/desktops, 992px and up) */
+ @media only screen and (min-width: 992px) {
+   .catholic-hymns {
+     margin: 130px 0 0 300px;
+   }
+
+ }
+
+ /* Extra large devices (large laptops and desktops, 1200px and up) */
+ @media only screen and (min-width: 1200px) {
+
+   .catholic-hymns {
+     margin: 130px 0 0 300px;
+   }
+
+ }
+
+ @media only screen and (min-width:320px) {
+   .hymns {
+     padding: 2px 1px 0px 15px;
+   }
+ }
+
+ @media only screen and (min-width: 992px) {
+   .hymns {
+     padding: 30px 15px 60px 15px;
+   }
+
+ }
+
+ span {
+   padding-right: 20px;
+ }
+
+ @media only screen and (min-width:320px) {
+
+   [class^="ti-"],
+   [class*=" ti-"] {
+     position: absolute;
+     left: 80px;
+     top: 134px;
+   }
+ }
+
+ /* Medium devices (landscape tablets, 768px and up) */
+ @media only screen and (min-width: 768px) {
+
+   [class^="ti-"],
+   [class*=" ti-"] {
+     position: absolute;
+     left: 80px;
+     top: 162px;
+   }
+
+ }
+
+ /* Large devices (laptops/desktops, 992px and up) */
+ @media only screen and (min-width: 992px) {
+
+   [class^="ti-"],
+   [class*=" ti-"] {
+     position: absolute;
+     left: 240px;
+     top: 162px;
+   }
+
+ }
+
+ /* Extra large devices (large laptops and desktops, 1200px and up) */
+ @media only screen and (min-width: 1200px) {
+
+   [class^="ti-"],
+   [class*=" ti-"] {
+     position: absolute;
+     left: 240px;
+     top: 162px;
+   }
+
+ }
 </style>
