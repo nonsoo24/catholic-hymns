@@ -66,7 +66,7 @@ export default {
     },
 
     getHymnProperty() {
-      // debugger
+      debugger
       //get hymn id from URL
       var routeParams = this.$route.params._id;
 
@@ -176,13 +176,13 @@ export default {
       }
     }
   },
-  created() {
-    this.getHymnProperty()
-  }
-
-  // mounted() {
+  // created() {
   //   this.getHymnProperty()
   // }
+
+  mounted() {
+    this.getHymnProperty()
+  }
 }
 </script>
 

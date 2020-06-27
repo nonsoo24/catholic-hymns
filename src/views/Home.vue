@@ -118,16 +118,16 @@ export default {
         .then(response => response.json())
         .then(data => {
           localStorage.setItem('hymns', JSON.stringify(data));
-          var newHymn = JSON.parse(localStorage.getItem('hymns'));
+        })
+        .catch(error => console.error(error))
+
+         var newHymn = JSON.parse(localStorage.getItem('hymns'));
           newHymn.forEach(hymn => {
             this.hymns.push(hymn);
           })
 
           // sort hymn title alphabetically
           this.hymns.sort((a, b) => (a.number > b.number) ? 1 : -1)
-        })
-        .catch(error => console.error(error))
-
       // checks if local storage is empty before pushing data coming from API to hymns array
       // if (localStorage.getItem('hymns') != null) {
 
@@ -171,7 +171,7 @@ export default {
   @media only screen and (min-width: 1200px) {
 
     .catholic-hymns {
-      margin: 130px 0 0 300px;
+      margin: 110px 0 0 300px;
     }
 
   }
