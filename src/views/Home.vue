@@ -34,7 +34,7 @@
         <div class="hymns w-11/12">
           <ol class="">
             <li v-for="(hymn, i) in myFilters" :key="i" @click="hymnLink(hymn._id)"
-              class="cursor-pointer p-5 border-b border-black"> <span>{{hymn.number}}.</span>
+              class="cursor-pointer p-5 border-b border-black flex"> <span class="number">{{hymn.number}}.</span>
               {{hymn.title}} </li>
           </ol>
         </div>
@@ -144,7 +144,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
   @media only screen and (min-width:320px) {
     .catholic-hymns {
       margin: 110px 0 0 90px;
@@ -162,7 +162,7 @@ export default {
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
     .catholic-hymns {
-      margin: 110px 0 0 250px;
+      margin: 110px 100px 0 250px;
     }
 
   }
@@ -171,7 +171,7 @@ export default {
   @media only screen and (min-width: 1200px) {
 
     .catholic-hymns {
-      margin: 110px 0 0 300px;
+      margin: 110px 100px 0 250px;
     }
 
   }
@@ -189,8 +189,9 @@ export default {
 
   }
 
-  span {
-    padding-right: 30px;
+  .number {
+    display: block !important;
+    padding-right: 10px;
   }
 
 </style>

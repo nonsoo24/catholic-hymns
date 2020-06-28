@@ -11,11 +11,11 @@
 
           <div class="flex">
             <!-- back arrow  -->
-            <!-- <span class="cursor-pointer font-bold text-lg mt-1" @click="backHome">
-              <figure> <img src="../assets/Img/back.svg" alt="back-arrow"> </figure>
-            </span> -->
+            <span class="cursor-pointer font-bold text-lg mt-1" @click="backHome">
+              <figure> <img src="../assets/Img/back-arrow.svg" alt="back-arrow"> </figure>
+            </span>
             <!-- hymn number and title -->
-            <h5 class="font-bold mb-6"><span>{{hymns.number}}.</span> {{hymns.title}}</h5>
+            <h5 class="font-bold mb-6"><span class="hymn-number">{{hymns.number}}.</span> {{hymns.title}}</h5>
           </div>
 
 
@@ -181,59 +181,17 @@ export default {
   //   this.getHymnProperty()
   // }
 
-  beforeMount() {
+  mounted() {
     this.getHymnProperty()
   }
 }
 </script>
 
 <style>
-@media only screen and (min-width:320px) {
-    .catholic-hymns {
-      margin: 110px 0 0 90px;
-    }
-  }
 
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px) {
-    .catholic-hymns {
-      margin: 110px 0 0 90px;
-    }
 
-  }
-
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-    .catholic-hymns {
-      margin: 110px 0 0 250px;
-    }
-
-  }
-
-  /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1200px) {
-
-    .catholic-hymns {
-      margin: 110px 0 0 300px;
-    }
-
-  }
-
-  @media only screen and (min-width:320px) {
-    .hymns {
-      padding: 30px 1px 0px 15px;
-    }
-  }
-
-  @media only screen and (min-width: 992px) {
-    .hymns {
-      padding: 30px 15px 60px 15px;
-    }
-
-  }
-
- span {
-   padding-right: 10px;
+ .hymn-number {
+   padding-right: 10px !important;
  }
 
  /* #chorus, #verses {
