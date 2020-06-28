@@ -32,7 +32,7 @@
 
         <!-- Hymn List div -->
         <div class="hymns w-11/12">
-          <ol class="">
+          <ol class="mb-5">
             <li v-for="(hymn, i) in myFilters" :key="i" @click="hymnLink(hymn._id)"
               class="cursor-pointer p-5 border-b border-black flex"> <span class="number">{{hymn.number}}.</span>
               {{hymn.title}} </li>

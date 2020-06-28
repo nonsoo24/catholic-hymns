@@ -98,7 +98,7 @@ export default {
          /* opacity: 0.5; */
          overflow-x: hidden;
          transition: 0.5s;
-         padding-top: 115px;
+         padding-top: 140px;
          top: 0;
          width: 70px;
          border-right: 1px solid #000;
@@ -119,7 +119,7 @@ export default {
          /* opacity: 0.5; */
          overflow-x: hidden;
          transition: 0.5s;
-         padding-top: 115px;
+         padding-top: 140px;
          top: 0;
          width: 70px;
          border-right: 1px solid #000;
