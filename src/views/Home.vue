@@ -138,7 +138,7 @@ export default {
   // created() {
   //   this.getHymn();
   // }
-  mounted() {
+  beforeMount() {
     this.getHymn();
   },
 };

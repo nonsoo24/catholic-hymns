@@ -181,7 +181,7 @@ export default {
   //   this.getHymnProperty()
   // }
 
-  mounted() {
+  beforeMount() {
     this.getHymnProperty()
   }
 }
