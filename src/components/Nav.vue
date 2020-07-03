@@ -71,7 +71,7 @@ export default {
       methods: {
        
         toggle() {
-         debugger
+         
             let sideBar = document.getElementById("mySidenav");
             let text = document.querySelector(".logo-text");
             let hambuger = document.querySelector(".hambuger");
