@@ -11,6 +11,23 @@
 <script>
 export default {
   name: 'App',
+  methods: {
+
+    handleConnectionChange (event) {
+      var wentOffline, wentOnline
+      if (event.type == "offline") {
+        console.log("You lost connection.");
+        wentOffline = new Date(event.timeStamp);
+      }
+      if (event.type == "online") {
+        console.log("You are now back online.");
+        wentOnline = new Date(event.timeStamp);
+        console.log("You were offline for " + (wentOnline - wentOffline) / 1000 + "seconds.");
+      }
+    },
+    // window.addEventListener('online', handleConnectionChange)
+    // window.addEventListener('offline', handleConnectionChange)
+  }
 }
 </script>
 
@@ -47,7 +64,7 @@ body {
     color: #fff !important;
 }
 
-.is-open {
+/* .is-open {
   width: 220px !important;
-}
+} */
 </style>

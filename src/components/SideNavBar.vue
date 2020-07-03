@@ -102,6 +102,7 @@ export default {
          top: 0;
          width: 70px;
          border-right: 1px solid #000;
+         display: none;
      }
   }
 
@@ -123,6 +124,7 @@ export default {
          top: 0;
          width: 70px;
          border-right: 1px solid #000;
+         display: block;
      }
 
   }
@@ -144,6 +146,7 @@ export default {
          top: 0;
          width: 70px;
          border-right: 1px solid #000;
+         display: block;
      }
 
   }

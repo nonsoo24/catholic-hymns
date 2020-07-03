@@ -69,30 +69,38 @@ export default {
 
 
       methods: {
+       
         toggle() {
+         debugger
             let sideBar = document.getElementById("mySidenav");
             let text = document.querySelector(".logo-text");
             let hambuger = document.querySelector(".hambuger");
             let menuTitle = document.querySelector(".menu-title")
             let hymnCategory = document.querySelector(".hymn-categories")
             let catholicHymn = document.querySelector(".catholic-hymns")
-            // let menuTitle = document.querySelectorAll(".menu-title")
-            if (!this.isClose) {
-                //sideBar.classList.add("is-open");
-                sideBar.style.width = '70px'
-                //text.style.display = "block"
-                 hymnCategory.style.display = "none"
-                 menuTitle.style.display = "none"
-                //  catholicHymn.style.marginLeft = "300px"
-                //hambuger.style.display = "none"
+
+           if(matchMedia("(min-width: 768px)").matches) {
+              if (!this.isClose) {
+                  sideBar.style.display = 'block'
+                  sideBar.style.width = '70px'
+                  hymnCategory.style.display = "none"
+                  menuTitle.style.display = "none"
+              } else {
+                  sideBar.style.width = '220px'
+                  hymnCategory.style.display = "block"
+                  menuTitle.style.display = "block"
+              }
             } else {
-                // sideBar.classList.remove("is-open");
-                sideBar.style.width = '220px'
-                 //text.style.display = "none"
-                 hymnCategory.style.display = "block"
-                 menuTitle.style.display = "block"
-                //  catholicHymn.style.marginLeft = "150px"
-                // hambuger.style.display = "block"
+                if (!this.isClose) {
+                   sideBar.style.display = 'none'
+                  hymnCategory.style.display = "none"
+                  menuTitle.style.display = "none"
+                } else {
+                  sideBar.style.display = 'block'
+                  sideBar.style.width = '220px'
+                  hymnCategory.style.display = "block"
+                  menuTitle.style.display = "block"
+                }
             }
             this.isClose = !this.isClose
         }

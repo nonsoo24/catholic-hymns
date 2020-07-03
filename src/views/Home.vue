@@ -147,7 +147,7 @@ export default {
 <style>
   @media only screen and (min-width:320px) {
     .catholic-hymns {
-      margin: 110px 0 0 90px;
+      margin: 110px 0 0 30px;
     }
   }
 
