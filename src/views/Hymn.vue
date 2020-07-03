@@ -7,15 +7,16 @@
 
 
         <!-- hymn div -->
-        <div class="hymns  w-11/12">
+        <div id="hymn-body" class="hymns  w-11/12">
 
           <div class="flex">
             <!-- back arrow  -->
-            <span class="cursor-pointer font-bold text-lg mt-1" @click="backHome">
-              <figure> <img src="../assets/Img/back-arrow.svg" alt="back-arrow"> </figure>
+            <span class="cursor-pointer font-bold text-lg mr-4" @click="backHome">
+              <figure> <img src="../assets/Img/back-arrow.png" alt="back-arrow" width="20px" height="20px"> </figure>
             </span>
             <!-- hymn number and title -->
-            <h5 class="font-bold mb-6"><span class="hymn-number">{{hymns.number}}.</span> {{hymns.title}}</h5>
+            <!-- <h5 class="font-bold mb-6"><span class="hymn-number">{{hymns.number}}.</span> {{hymns.title}}</h5> -->
+            <h5 class="font-bold mb-6">{{hymns.title}}</h5>
           </div>
 
 
@@ -192,6 +193,10 @@ export default {
 
  .hymn-number {
    padding-right: 10px !important;
+ }
+
+ #hymn-body {
+    padding: 0px 15px 60px 15px;
  }
 
  /* #chorus, #verses {
