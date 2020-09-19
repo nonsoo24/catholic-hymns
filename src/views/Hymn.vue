@@ -50,66 +50,68 @@ import {HymnList} from '@/components/Hymn.js'
 export default {
 
   data() {
-    return {
-      hymns: {}
-    }
-  },
-  name: 'Home',
-  components: {
-    Nav,
-    SideNavBar
-  },
-
-  computed: {
-    // lineBreak() {
-    //    return this.hymns.verses.replace(/\n/g, '<br>');
-    //    console.log(this.hymns.verses)
-    // }
-  },
-  methods: {
-    //  lineBreak() {
-    //    this.hymns.verses.forEach((hymn, i) => {
-    //       console.log(hymn.verse.replace(/\n/g, 'food'))
-
-    //    });
-
-    //    console.log(this.hymns)
-    // },
-    backHome() {
-      this.$router.push({
-        path: '/'
-      })
-
+      return {
+        hymns: {}
+      }
+    },
+    name: 'Home',
+    components: {
+      Nav,
+      SideNavBar
     },
 
-    getHymnProperty() {
-      debugger
-      //get hymn id from URL
-      var routeParams = this.$route.params._id;
+    computed: {
+      // lineBreak() {
+      //    return this.hymns.verses.replace(/\n/g, '<br>');
+      //    console.log(this.hymns.verses)
+      // }
+    },
+    methods: {
+      //  lineBreak() {
+      //    this.hymns.verses.forEach((hymn, i) => {
+      //       console.log(hymn.verse.replace(/\n/g, 'food'))
 
-      //get hymn details from local storage, convert it to object and assign it to a variable
-      var details = JSON.parse(localStorage.getItem('hymnProperty'));
+      //    });
 
-      //get id of chorus div and assign it to a variable
-      let chorusDiv = document.querySelector('#chorus')
+      //    console.log(this.hymns)
+      // },
+      backHome() {
+        this.$router.push({
+          path: '/'
+        })
 
-      //checks if hymn details from local storage is not null
-      if (details != null) {
-        //Finds hymn id from details and checks if hymn id from details is the same as hymn id from URL
-        var idFound = details.find(ele => ele._id == routeParams);
+      },
 
-        if (idFound) {
-          this.hymns = idFound;
+      async getHymnProperty() {
+        debugger
+        //get hymn id from URL
+        var routeParams = this.$route.params._id;
 
-          //checks if hymn object contains chorus then hide or show the chorus div
-          this.hymns.hasOwnProperty('chorus') ? chorusDiv.style.display = 'block' : chorusDiv.style
-            .display = 'none';
+        //get hymn details from local storage, convert it to object and assign it to a variable
+        var details = JSON.parse(localStorage.getItem('hymnProperty'));
 
-          //if hymn id from details doesn't match that from URL then it goes to fetch from the DB
-        } else {
-          fetch("https://catholic-hymns.herokuapp.com/hymns/" + this.$route.params._id)
-            .then(response => response.json())
-            .then(data => {
+        //get id of chorus div and assign it to a variable
+        let chorusDiv = document.querySelector('#chorus')
+
+        //checks if hymn details from local storage is not null
+        if (details != null) {
+          //Finds hymn id from details and checks if hymn id from details is the same as hymn id from URL
+          var idFound = details.find(ele => ele._id == routeParams);
+
+          if (idFound) {
+            this.hymns = idFound;
+
+            //checks if hymn object contains chorus then hide or show the chorus div
+            this.hymns.hasOwnProperty('chorus') ? chorusDiv.style.display = 'block' : chorusDiv
+              .style
+              .display = 'none';
+
+            //if hymn id from details doesn't match that from URL then it goes to fetch from the DB
+          } else {
+            try {
+              const baseURL = "https://catholic-hymns.herokuapp.com/hymns/" + this.$route.params._id,
+                response = await fetch(baseURL),
+                data = await response.json();
               let newhymn = {}
 
               // checks if the data coming contains chorus then re-assigns data object to newhymn
@@ -147,14 +149,18 @@ export default {
               this.hymns.hasOwnProperty('chorus') ? chorusDiv.style.display = 'block' : chorusDiv
                 .style.display = 'none';
 
-            })
-            .catch(error => console.error(error))
-        }
-        // if details from local storage is null, it goes to fetch from the DB
-      } else {
-        fetch("https://catholic-hymns.herokuapp.com/hymns/" + this.$route.params._id)
-          .then(response => response.json())
-          .then(data => {
+            } catch (err) {
+              console.log(err)
+            }
+          }
+          // if details from local storage is null, it goes to fetch from the DB
+        } else {
+
+          try {
+            const baseURL = "https://catholic-hymns.herokuapp.com/hymns/" + this.$route.params._id,
+              response = await fetch(baseURL),
+              data = await response.json();
+
             let newhymn = {};
             if (data.hasOwnProperty('chorus')) {
               newhymn = {
@@ -189,21 +195,22 @@ export default {
 
             this.hymns.hasOwnProperty('chorus') ? chorusDiv.style.display = 'block' : chorusDiv
               .style.display = 'none';
+          } catch (err) {
+            console.log(err)
+          }
 
-          })
-          .catch(error => console.error(error))
+        }
       }
-    }
-  },
-  // created() {
-  //   this.getHymnProperty()
-  // }
+    },
+    // created() {
+    //   this.getHymnProperty()
+    // }
 
-  mounted() {
-    this.getHymnProperty()
-   // this.lineBreak()
+    async mounted() {
+      await this.getHymnProperty()
+      // this.lineBreak()
+    }
   }
-}
 </script>
 
 <style>
