@@ -112,34 +112,50 @@ export default {
       this.categoryFilter = results
     },
 
-    getHymn() {
-      //gets all hymns from DB
-      fetch("https://catholic-hymns.herokuapp.com/hymns")
-        .then(response => response.json())
-        .then(data => {
-          localStorage.setItem('hymns', JSON.stringify(data));
-        })
-        .catch(error => console.error(error))
+   async getHymn() {
 
-         var newHymn = JSON.parse(localStorage.getItem('hymns'));
-          newHymn.forEach(hymn => {
-            this.hymns.push(hymn);
-          })
-
-          // sort hymn title alphabetically
+       debugger
+       try {
+         const baseURL = 'https://catholic-hymns.herokuapp.com/hymns',
+           response = await fetch(baseURL),
+           data = await response.json();
+         //Stores data coming from API to local storage
+         localStorage.setItem('hymns', JSON.stringify(data));
+         let newHymn = JSON.parse(localStorage.getItem('hymns'));
+         newHymn.forEach(hymn => {
+           this.hymns.push(hymn);
+         })
+         // sort hymn title alphabetically
           this.hymns.sort((a, b) => (a.number > b.number) ? 1 : -1)
+       } catch (err) {
+         console.log(err)
+       }
+}
+
+      //gets all hymns from DB
+      // fetch("https://catholic-hymns.herokuapp.com/hymns")
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     localStorage.setItem('hymns', JSON.stringify(data));
+      //   })
+      //   .catch(error => console.error(error))
+
+      //    var newHymn = JSON.parse(localStorage.getItem('hymns'));
+      //     newHymn.forEach(hymn => {
+      //       this.hymns.push(hymn);
+      //     })
+
       // checks if local storage is empty before pushing data coming from API to hymns array
       // if (localStorage.getItem('hymns') != null) {
 
       // }
-    }
     },
 
   // created() {
   //   this.getHymn();
   // }
-  beforeMount() {
-    this.getHymn();
+  async beforeMount() {
+   await this.getHymn();
   },
 };
 </script>

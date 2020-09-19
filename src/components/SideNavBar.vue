@@ -30,7 +30,7 @@
         <div class="mb-5"  v-for="(hymnCategory, i) in hymnCategories" :key="i">
           <input v-model="selectedCategory" type="radio" :id = hymnCategory.id :value = hymnCategory.id :name = hymnCategory.category  v-on:change="category">
 
-          <label :for= hymnCategory.id  class="font-bold capitalize">{{hymnCategory.id}} Hymns</label>
+          <label :for= hymnCategory.id  class="font-bold capitalize">{{hymnCategory.id}}</label>
         </div>
       </div>
     </nav>
@@ -49,7 +49,27 @@ export default {
           name: 'category'
         },
         {
+          id: 'advent',
+          name: 'category'
+        },
+        {
+          id: 'communion',
+          name: 'category'
+        },
+         {
+          id: 'easter',
+          name: 'category'
+        },
+        {
           id: 'entrance',
+          name: 'category'
+        },
+         {
+          id: 'indigenous',
+          name: 'category'
+        },
+         {
+          id: 'lent',
           name: 'category'
         },
         {
@@ -57,21 +77,9 @@ export default {
           name: 'category'
         },
         {
-          id: 'consecration',
+          id: 'recessional',
           name: 'category'
         },
-        {
-          id: 'communion',
-          name: 'category'
-        },
-        {
-          id: 'closing',
-          name: 'category'
-        },
-        {
-          id: 'indigenous',
-          name: 'category'
-        }
       ]
     }
   },

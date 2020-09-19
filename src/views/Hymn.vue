@@ -31,7 +31,7 @@
           <!-- hymn verses -->
           <div id="verses">
             <ol class="list-decimal">
-              <li v-for="(hymn, i) in hymns.verses" :key="i" class="p-5">{{hymn.verse}}</li>
+              <li v-for="(hymn, i) in hymns.verses" :key="i" class="p-5">{{hymn.verse.replace(/\\n/g, '<br/>')}}</li>
             </ol>
           </div>
 
@@ -60,7 +60,21 @@ export default {
     SideNavBar
   },
 
+  computed: {
+    // lineBreak() {
+    //    return this.hymns.verses.replace(/\n/g, '<br>');
+    //    console.log(this.hymns.verses)
+    // }
+  },
   methods: {
+    //  lineBreak() {
+    //    this.hymns.verses.forEach((hymn, i) => {
+    //       console.log(hymn.verse.replace(/\n/g, 'food'))
+
+    //    });
+
+    //    console.log(this.hymns)
+    // },
     backHome() {
       this.$router.push({
         path: '/'
@@ -69,6 +83,7 @@ export default {
     },
 
     getHymnProperty() {
+      debugger
       //get hymn id from URL
       var routeParams = this.$route.params._id;
 
@@ -164,10 +179,12 @@ export default {
               localHymns.push(newhymn);
               localStorage.setItem('hymnProperty', JSON.stringify(localHymns));
               this.hymns = newhymn;
+              //console.log(this.hymns)
             } else {
               localHymns.push(newhymn);
               localStorage.setItem('hymnProperty', JSON.stringify(localHymns));
               this.hymns = newhymn;
+              //console.log(this.hymns)
             }
 
             this.hymns.hasOwnProperty('chorus') ? chorusDiv.style.display = 'block' : chorusDiv
@@ -184,6 +201,7 @@ export default {
 
   mounted() {
     this.getHymnProperty()
+   // this.lineBreak()
   }
 }
 </script>
