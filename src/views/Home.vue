@@ -53,84 +53,84 @@ import {HymnList} from '@/components/Hymn.js'
 export default {
 
   data() {
-    return {
-      hymns: [],
-      searchQuery: null,
-      categoryFilter: [],
-    }
-  },
-  name: 'Home',
-  components: {
-    Nav,
-    SideNavBar
-  },
-
-  computed: {
-    myFilters() {
-      if (this.searchQuery) {
-        return this.hymns.filter((hymn) => {
-          return this.searchQuery.toLowerCase().split(' ').every(v => hymn.title.toLowerCase()
-            .includes(v))
-        })
-
-      } else if (this.categoryFilter.length > 0) {
-        return this.categoryFilter
-
-      } else {
-        return this.hymns
+      return {
+        hymns: [],
+        searchQuery: null,
+        categoryFilter: [],
       }
-    }
-  },
+    },
+    name: 'Home',
+    components: {
+      Nav,
+      SideNavBar
+    },
 
-  methods: {
-    //route to hymn page by hymn ID
-    hymnLink(_id) {
-      this.$router.push({
-        name: 'Hymn',
-        params: {
-          _id
+    computed: {
+      myFilters() {
+        if (this.searchQuery) {
+          return this.hymns.filter((hymn) => {
+            return this.searchQuery.toLowerCase().split(' ').every(v => hymn.title.toLowerCase()
+              .includes(v))
+          })
+
+        } else if (this.categoryFilter.length > 0) {
+          return this.categoryFilter
+
+        } else {
+          return this.hymns
         }
-      }).catch((err) => {
-        throw new Error(`error: ${err}.`);
-      });
+      }
     },
 
-    // filter hymn by category
-    filterHymns(value) {
-      value == 'all' ? this.allHymns() : this.filteredHymns(value);
-    },
-    // return all hymns
-    allHymns() {
-      this.categoryFilter = this.hymns;
-    },
+    methods: {
+      //route to hymn page by hymn ID
+      hymnLink(_id) {
+        this.$router.push({
+          name: 'Hymn',
+          params: {
+            _id
+          }
+        }).catch((err) => {
+          throw new Error(`error: ${err}.`);
+        });
+      },
 
-    // return all hymn list that matches value (category)
-    filteredHymns(value) {
-      let results = this.hymns.filter((hymn) => {
-        return hymn.category.name.toLowerCase() === value.toLowerCase()
-      })
-      this.categoryFilter = results
-    },
+      // filter hymn by category
+      filterHymns(value) {
+        value == 'all' ? this.allHymns() : this.filteredHymns(value);
+      },
+      // return all hymns
+      allHymns() {
+        this.categoryFilter = this.hymns;
+      },
 
-   async getHymn() {
+      // return all hymn list that matches value (category)
+      filteredHymns(value) {
+        let results = this.hymns.filter((hymn) => {
+          return hymn.category.name.toLowerCase() === value.toLowerCase()
+        })
+        this.categoryFilter = results
+      },
 
-       debugger
-       try {
-         const baseURL = 'https://catholic-hymns.herokuapp.com/hymns',
-           response = await fetch(baseURL),
-           data = await response.json();
-         //Stores data coming from API to local storage
-         localStorage.setItem('hymns', JSON.stringify(data));
-         let newHymn = JSON.parse(localStorage.getItem('hymns'));
-         newHymn.forEach(hymn => {
-           this.hymns.push(hymn);
-         })
-         // sort hymn title alphabetically
+      async getHymn() {
+
+        debugger
+        try {
+          const baseURL = 'https://catholic-hymns.herokuapp.com/hymns',
+            response = await fetch(baseURL),
+            data = await response.json();
+          //Stores data coming from API to local storage
+          localStorage.setItem('hymns', JSON.stringify(data));
+          let newHymn = JSON.parse(localStorage.getItem('hymns'));
+          newHymn.forEach(hymn => {
+            this.hymns.push(hymn);
+          })
+          // sort hymn title alphabetically
           this.hymns.sort((a, b) => (a.number > b.number) ? 1 : -1)
-       } catch (err) {
-         console.log(err)
-       }
-}
+        } catch (err) {
+          console.log(err)
+        }
+      }
 
       //gets all hymns from DB
       // fetch("https://catholic-hymns.herokuapp.com/hymns")
@@ -151,13 +151,13 @@ export default {
       // }
     },
 
-  // created() {
-  //   this.getHymn();
-  // }
-  async beforeMount() {
-   await this.getHymn();
-  },
-};
+    // created() {
+    //   this.getHymn();
+    // }
+    async beforeMount() {
+      await this.getHymn();
+    },
+  };
 </script>
 
 <style>
