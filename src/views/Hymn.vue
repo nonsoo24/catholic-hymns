@@ -31,7 +31,7 @@
           <!-- hymn verses -->
           <div id="verses">
             <ol class="list-decimal">
-              <li v-for="(hymn, i) in hymns.verses" :key="i" class="p-5">{{hymn.verse.replace(/\\n/g, '<br/>')}}</li>
+              <li v-for="(hymn, i) in hymns.verses" :key="i" class="p-5">{{hymn.verse.replace(/\\n/g, '')}}</li>
             </ol>
           </div>
 
